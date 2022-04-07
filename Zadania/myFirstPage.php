@@ -29,12 +29,34 @@ $array = array
 <h1><font size = "+30">WITAMY!</font></h1>
 <table align="center" >
 <?php
-foreach ($array as $subArray){
+    foreach ($array as $subArray) {
+        $format = '<li><a href="myFirstPage.php?link=%s">%s</a></li>';
+        echo sprintf($format, $subArray['link'], $subArray['link']);
+    }
+if (isset($_GET["link"])) {
+    # code...
+    $siteFound = false;
+    foreach ($array as $subArray) {
+        if ($_GET["link"]==$subArray['link']) {
+            echo "<h1>".$subArray['name']."</h1>";
+            echo "<span>".$subArray["contents"]."</span>";
+            $siteFound = true;
+            break;
+        }
+    }
+    if (!$siteFound) {
+        echo "podana strona nie została znaleziona, sprawdź link i spróbuj ponownie";
+        echo '<a href="myFirstPage.php"><button>Zabierz mnie stąd!</button></a>';
+    }
+}else{
+    echo "<h1>".$array[0]["name"]."</h1>";
+    echo "<span>".$array[0]["contents"]."</span>";
 ?>
 
 <td>
-    <td><a href="<?php echo "myFirstPage.php?link=". $subArray['link'] ?>"><?php echo $subArray['name'].'<br>'; ?></a></td>
-<!--    <td><a href="myFirstPage.php"></a> --><?php //echo $subArray['link'].'<br>'; ?><!--</a></td>-->
+    <td><a href="<?php echo "myFirstPage.php?link=". $subArray['link'] ?>">
+            <?php echo $subArray['name'].'<br>';?>
+        </a></td>
 </tr>
 
 <?php
