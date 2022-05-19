@@ -1,9 +1,9 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$dbuser = "s25944";
+$dbpass = "Kar.Siel";
 
-$db = mysqli_connect("localhost", "root", null , "cars");
+$db = new PDO("mysql:host=localhost;dbname=s25944", $dbuser, $dbpass);
 
 if(isset($_GET['mainId'])){
     $mainId=$_GET['mainId'];
@@ -35,6 +35,16 @@ $next=$mainId+1;
         td{
             border: 2px solid black;
         }
+        button:hover{
+            background-color: darkgreen !important;
+            border: 4px darkgreen!important;
+        }
+        /*a:hover{*/
+        /*    position:absolute !important;*/
+        /*    top: 300px !important;*/
+        /*    right: 333px !important;*/
+        /*    color: black !important;*/
+        /*}*/
     </style>
 </head>
 <body>
@@ -60,7 +70,7 @@ echo '</table>';
 <br>
 <?php
 echo '<button style="border-radius: 5px;  border: 2px  mediumseagreen; background-color: mediumseagreen; width: 90px; height: 30px"><a style="text-decoration: none; color: white; font-size: 100%; font-family: Helvetica" href="index.php?mainId=' .$prev.'"><< Previous</a></button>';
-echo '<button style="border-radius: 5px; position: absolute; left: 110px; border: 2px  mediumseagreen; background-color:  mediumseagreen; width: 90px; height: 30px"><a style="text-decoration: none; color: white; font-size: 100%; font-family: Helvetica" href="index.php?mainId='.$next.'">Next >></a></button>';
+echo '<button style="border-radius: 5px; position: absolute; left: 122px; border: 2px  mediumseagreen; background-color:  mediumseagreen; width: 90px; height: 30px"><a style="text-decoration: none; color: white; font-size: 100%; font-family: Helvetica" href="index.php?mainId='.$next.'">Next >></a></button>';
 ?>
 
 </body>

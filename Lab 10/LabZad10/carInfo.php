@@ -1,10 +1,11 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$dbuser = "s25944";
+$dbpass = "Kar.Siel";
 
-$db = mysqli_connect("localhost", "root", null , "cars");
+$db = new PDO("mysql:host=localhost;dbname=s25944", $dbuser, $dbpass);
 
+//foreach ($db ->query('SELECT max(id) FROM samochody')as $row);
 //if ($db->connect_error) {
 //    die("Connection failed: " . $db->connect_error);
 //}
